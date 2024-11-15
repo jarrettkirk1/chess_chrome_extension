@@ -19,6 +19,16 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
                 if (pgnTextarea) {
                   pgnTextarea.value = pgn; // Set the PGN text
                 }
+
+                 // Set the depth slider to the maximum value
+                const depthSlider = document.getElementById("depth-slider");
+                if (depthSlider) {
+                  depthSlider.value = depthSlider.max; // Set the slider to the maximum value
+                  // Optionally trigger an input event if needed by the page
+                  depthSlider.dispatchEvent(new Event('input', { bubbles: true }));
+                } else {
+                  console.error("Depth slider not found.");
+                }
   
                 // Click the Analyze button
                 const analyzeButton = document.getElementById("review-button");
